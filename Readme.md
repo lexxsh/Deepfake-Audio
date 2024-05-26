@@ -329,6 +329,7 @@ class Model(nn.Module):
 | SimpleANN | Flatten -> Linear(12032, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> ReLU -> Linear(256, 1) -> Sigmoid | 약 12,350,721 | 간단한 완전 연결 구조, ReLU 활성화 함수 사용 |
 | SimpleCNN | Conv2d(1, 32) -> ReLU -> MaxPool2d -> Conv2d(32, 64) -> ReLU -> MaxPool2d -> Linear(64 * 16 * 47, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> Linear(256, 1) -> Sigmoid | 약 7,177,857 | Convolutional 레이어와 Max Pooling 사용, ReLU 활성화 함수 사용 |
 | Model (ResNet101 기반) | ResNet101의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid | 약 42,497,969 | 사전 훈련된 ResNet101 아키텍처 사용, 전이 학습에 적합 |
+| CustomModel (ResNet200d 기반)| ResNet200d의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid	|약 63,965,816|	사전 훈련된 ResNet200d 아키텍처 사용, 전이 학습에 적합|
 
 |  |  | Simple ANN | Simple CNN | Resnet101 튜닝 | Resnet202 |  |
 | --- | --- | --- | --- | --- | --- | --- |
