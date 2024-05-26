@@ -1,4 +1,5 @@
 ## 본 페이지는 Deep Fake audio를 검출하기 위한 기본 분석 및 ML 코드가 첨부 되어있습니다.
+또한 같이 레포에 첨부되있는 코드는 colab 에서 진행하였으며 baseline code입니다.
 ## 목차
 1. [Dataset](#Dataset)
 2. [Feature](#Feature)
