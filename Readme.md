@@ -189,6 +189,33 @@ def CHROMA(y, sr, n_fft=2048, hop_length=512, n_chroma=12):
 ![Untitled (46)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/b94e0f44-6b9b-45f9-9b9b-36986415bc11)
 
 ## Result
+### Deep voice
+- ANN 모델 구성
+
+```python
+    model = Sequential()
+    model.add(Dense(32, input_shape=input_shape))
+    model.add(Activation("relu"))
+    
+    
+    model.add(Dense(64))
+    model.add(Activation("relu"))
+    model.add(Dropout(0.1))
+    
+    model.add(Dense(32))
+    model.add(Activation("relu"))
+    model.add(Dropout(0.1))
+    
+    model.add(Dense(num_labels))
+    model.add(Activation("softmax"))
+```
+![Untitled (53)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/52806dd0-0740-4602-b714-e2519dce3ebc)
+![Untitled (54)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/c3890289-e5ee-40ed-99d8-097d4bbc0f36)
+똑같은 모델에서 val loss을 줄이고 오버 피팅을 줄이기 위해 은닉층에 dropout 0.1을 추가한 결과
+
+- CNN 모델 구성
+- ![Untitled (55)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/84fb0638-6d6b-487e-bd9f-3dc4bd9f1eb1)
+- ![Untitled (56)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/1e1d8c2d-a577-4a35-949c-cb9ac76861e7)
 
 ### ASVspoof
 
