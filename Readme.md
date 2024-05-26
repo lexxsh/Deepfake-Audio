@@ -189,6 +189,33 @@ def CHROMA(y, sr, n_fft=2048, hop_length=512, n_chroma=12):
 ![Untitled (46)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/b94e0f44-6b9b-45f9-9b9b-36986415bc11)
 
 ## Result
+### Deep voice
+- ANN 모델 구성
+
+```python
+    model = Sequential()
+    model.add(Dense(32, input_shape=input_shape))
+    model.add(Activation("relu"))
+    
+    
+    model.add(Dense(64))
+    model.add(Activation("relu"))
+    model.add(Dropout(0.1))
+    
+    model.add(Dense(32))
+    model.add(Activation("relu"))
+    model.add(Dropout(0.1))
+    
+    model.add(Dense(num_labels))
+    model.add(Activation("softmax"))
+```
+![Untitled (53)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/52806dd0-0740-4602-b714-e2519dce3ebc)
+![Untitled (54)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/c3890289-e5ee-40ed-99d8-097d4bbc0f36)
+똑같은 모델에서 val loss을 줄이고 오버 피팅을 줄이기 위해 은닉층에 dropout 0.1을 추가한 결과
+
+- CNN 모델 구성
+- ![Untitled (55)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/84fb0638-6d6b-487e-bd9f-3dc4bd9f1eb1)
+- ![Untitled (56)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/1e1d8c2d-a577-4a35-949c-cb9ac76861e7)
 
 ### ASVspoof
 
@@ -302,13 +329,14 @@ class Model(nn.Module):
 | SimpleANN | Flatten -> Linear(12032, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> ReLU -> Linear(256, 1) -> Sigmoid | 약 12,350,721 | 간단한 완전 연결 구조, ReLU 활성화 함수 사용 |
 | SimpleCNN | Conv2d(1, 32) -> ReLU -> MaxPool2d -> Conv2d(32, 64) -> ReLU -> MaxPool2d -> Linear(64 * 16 * 47, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> Linear(256, 1) -> Sigmoid | 약 7,177,857 | Convolutional 레이어와 Max Pooling 사용, ReLU 활성화 함수 사용 |
 | Model (ResNet101 기반) | ResNet101의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid | 약 42,497,969 | 사전 훈련된 ResNet101 아키텍처 사용, 전이 학습에 적합 |
+| CustomModel (ResNet200d 기반)| ResNet200d의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid	|약 63,965,816|	사전 훈련된 ResNet200d 아키텍처 사용, 전이 학습에 적합|
 
 |  |  | Simple ANN | Simple CNN | Resnet101 튜닝 | Resnet202 |  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Mel-spac | Test Accuarcy | 88 | 90 | 92 | 98 | 이건 좋음 |
+| Mel-spac | Test Accuarcy | 88 | 90 | 92 | 98 |  |
 |  | EER | 0.053 | 0.061 | 0.404 | 0.09 | EER이 정확하지않음 |
 |  |  |  |  |  |  |  |
-| MFCC | Test Accuarcy |  |  |  | 95 |  |
+| MFCC | Test Accuarcy | 88 | 92 | 94 | 95 |  |
 |  | EER |  |  |  | 0.08 |  |
 |  |  |  |  |  |  |  |
 
