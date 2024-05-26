@@ -332,10 +332,10 @@ class Model(nn.Module):
 
 |  |  | Simple ANN | Simple CNN | Resnet101 튜닝 | Resnet202 |  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Mel-spac | Test Accuarcy | 88 | 90 | 92 | 98 | 이건 좋음 |
+| Mel-spac | Test Accuarcy | 88 | 90 | 92 | 98 |  |
 |  | EER | 0.053 | 0.061 | 0.404 | 0.09 | EER이 정확하지않음 |
 |  |  |  |  |  |  |  |
-| MFCC | Test Accuarcy |  |  |  | 95 |  |
+| MFCC | Test Accuarcy | 88 | 92 | 94 | 95 |  |
 |  | EER |  |  |  | 0.08 |  |
 |  |  |  |  |  |  |  |
 
