@@ -1,8 +1,8 @@
 ## 본 페이지는 Deep Fake audio를 검출하기 위한 기본 분석 및 ML 코드가 첨부 되어있습니다.
 ## 목차
-1. [Dataset](##Dataset)
-2. [Feature](##Feature)
-3. [Result](##Result)
+1. [Dataset](#Dataset)
+2. [Feature](#Feature)
+3. [Result](#Result)
 
 
 ## Dataset
