@@ -1,5 +1,7 @@
 ## 본 페이지는 Deep Fake audio를 검출하기 위한 기본 분석 및 ML 코드가 첨부 되어있습니다.
-또한 같이 레포에 첨부되있는 코드는 colab 에서 진행하였으며 baseline code입니다.
+또한 같이 레포에 첨부되있는 코드는 colab 에서 진행하였으며 baseline code입니다.<br/>
+결과와 관련 Task 및 진행과정은 같이 첨부되어 있는 밢표자료와 보고서를 참고해주세요!
+
 ## 목차
 1. [Dataset](#Dataset)
 2. [Feature](#Feature)
@@ -312,33 +314,6 @@ class Model(nn.Module):
 
 ```
 
-| 모델 | 주요 특징 | 적합한 데이터 |
-| --- | --- | --- |
-| SimpleANN | - 완전 연결된 레이어로 구성됨 | - 단순한 구조의 입력 데이터 |
-|  | - ReLU 활성화 함수 사용 | - 이미지나 시퀀스가 아닌 데이터 |
-|  | - 이진 분류를 위해 시그모이드 함수 사용 |  |
-| SimpleCNN | - 합성곱 레이어와 풀링 레이어 사용 | - 이미지 데이터 |
-|  | - 완전 연결된 레이어로 분류 | - 공간적 특징 추출이 필요한 경우 |
-|  | - 이미지 처리에 특히 효과적 |  |
-| Model | - ResNet101 아키텍처 기반 | - 이미지 데이터 |
-|  | - 전이 학습을 통해 성능 향상 가능 | - 대규모 이미지 데이터, 딥러닝 태스크에 적합 |
-|  | - 이미지 특성 추출을 위해 사전 훈련된 모델 사용 |  |
-
-| 모델 | 구조 | 파라미터 수 | 특징 |
-| --- | --- | --- | --- |
-| SimpleANN | Flatten -> Linear(12032, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> ReLU -> Linear(256, 1) -> Sigmoid | 약 12,350,721 | 간단한 완전 연결 구조, ReLU 활성화 함수 사용 |
-| SimpleCNN | Conv2d(1, 32) -> ReLU -> MaxPool2d -> Conv2d(32, 64) -> ReLU -> MaxPool2d -> Linear(64 * 16 * 47, 1024) -> ReLU -> Linear(1024, 512) -> ReLU -> Linear(512, 256) -> Linear(256, 1) -> Sigmoid | 약 7,177,857 | Convolutional 레이어와 Max Pooling 사용, ReLU 활성화 함수 사용 |
-| Model (ResNet101 기반) | ResNet101의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid | 약 42,497,969 | 사전 훈련된 ResNet101 아키텍처 사용, 전이 학습에 적합 |
-| CustomModel (ResNet200d 기반)| ResNet200d의 특성 추출기 부분 -> AdaptiveAvgPool2d -> Flatten -> Linear -> Sigmoid	|약 63,965,816|	사전 훈련된 ResNet200d 아키텍처 사용, 전이 학습에 적합|
-
-|  |  | Simple ANN | Simple CNN | Resnet101 튜닝 | Resnet202 |  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Mel-spac | Test Accuarcy | 88 | 90 | 92 | 98 |  |
-|  | EER | 0.053 | 0.061 | 0.404 | 0.09 | EER이 정확하지않음 |
-|  |  |  |  |  |  |  |
-| MFCC | Test Accuarcy | 88 | 92 | 94 | 95 |  |
-|  | EER |  |  |  | 0.08 |  |
-|  |  |  |  |  |  |  |
 
 ![Untitled (48)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/da89a4d7-beaa-403a-825a-80224112604b)
 ![Untitled (49)](https://github.com/lexxsh/Deepfake-Audio/assets/110239629/4b14e42b-c27d-4f94-9595-e972e9cb2e0b)
